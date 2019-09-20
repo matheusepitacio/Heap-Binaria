@@ -1,6 +1,9 @@
-#include <iostream>
+/*
+	Minha implementacao da Heap Binaria 
+	com base nas anotacoes das aulas
+*/
 
-using namespace std;
+#include <iostream>
 
 class heap_binaria
 {
@@ -107,8 +110,8 @@ public:
 
 	void print_heap()
 	{
-		for (int i = 0; i < this->heap_size; i++) cout << this->h[i] << " ";
-		cout << endl;
+		for (int i = 0; i < this->heap_size; i++) std::cout << this->h[i] << " ";
+		std::cout << std::endl;
 	}
 };
 
@@ -129,6 +132,6 @@ int main(int argc, char *argv[])
 	heap_binaria bin(arr, n);
 	bin.print_heap();
 	int* aux = bin.heap_sort();
-	for(int i = 0; i < 10; i++)	cout << aux[i] << " ";
+	for(int i = 0; i < 10; i++)	std::cout << aux[i] << " ";
 	return 0;
 }
