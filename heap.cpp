@@ -65,13 +65,17 @@ public:
 
 	void bubble_up()
 	{
-		int i = this->heap_size - 1;
-		while (i > 0 && this->h[i] > this->h[(i / 2) - 1])
-		{
-			int temp = this->h[i];
-			this->h[i] = this->h[i / 2 - 1];
-			this->h[i / 2 - 1] = temp;
-		}
+		int i = this->heap_size-1;
+		int j = i;
+		if (j % 2 == 1)
+			j++;
+		while (i>0 && this->h[i] > this->h[(j/2 - 1)]){
+			std::swap(h[i],h[j/2 - 1]);
+			if ( i % 2 == 1)
+				i++;
+			i = i/2 - 1;
+			j = i;
+		}		
 	}
 
 	void heap_insert(int v)
@@ -117,21 +121,26 @@ public:
 
 int main(int argc, char *argv[])
 {
-	int* arr = new int[10];
-	int n = 10;
-	arr[0] = 4;
-	arr[1] = 1;
-	arr[2] = 3;
-	arr[3] = 2;
-	arr[4] = 16;
-	arr[5] = 9;
-	arr[6] = 10;
-	arr[7] = 14;
-	arr[8] = 8;
-	arr[9] = 7;
+	int* arr = new int[7];
+	int n = 7;
+	arr[0] = 3;
+	arr[1] = 6;
+	arr[2] = 2;
+	arr[3] = 0;
+	arr[4] = 5;
+	arr[5] = 4;
+	arr[6] = 1;
 	heap_binaria bin(arr, n);
 	bin.print_heap();
-	int* aux = bin.heap_sort();
-	for(int i = 0; i < 10; i++)	std::cout << aux[i] << " ";
+	std::cout << std::endl;
+	heap_binaria bon;
+	bon.heap_insert(3);
+	bon.heap_insert(6);
+	bon.heap_insert(2);
+	bon.heap_insert(0);
+	bon.heap_insert(5);
+	bon.heap_insert(4);
+	bon.heap_insert(1);
+	bon.print_heap();
 	return 0;
 }
